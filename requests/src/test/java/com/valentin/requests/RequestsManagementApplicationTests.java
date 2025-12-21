@@ -96,6 +96,38 @@ class RequestsManagementApplicationTests {
 	}
 
 	@Test
+	void shouldGetRequestByStatus() {
+		String requestBody = """
+				{
+				    "requestType": "vacaciones",
+				    "startingDate": "05/16/2026",
+				    "finalDate": "05/30/2026",
+				    "voucherRequired": false,
+				    "employeeId": "12345"
+				}
+				""";
+		// Insert element
+		RestAssured.given()
+				.contentType("application/json")
+				.body(requestBody)
+				.when()
+				.post("/requests")
+				.then()
+				.statusCode(201);
+		// Verify quantity
+		RestAssured.given()
+				.contentType("application/json")
+				.param("employeeId","12345")
+				.param("status","PENDING")
+				.when()
+				.get("/requests/status")
+				.then()
+				.statusCode(200)
+				.body("$", hasSize(1))
+				.body("[0].status",equalTo("PENDING"));
+	}
+
+	@Test
 	void shouldUpdateRequest() {
 		String requestBody = """
 				{
@@ -138,6 +170,43 @@ class RequestsManagementApplicationTests {
 				.body("Id", notNullValue())
 				.body("requestType", equalTo("incapacidad"))
 				.body("requestVoucher", equalTo("BASE64...."));
+	}
+
+	@Test
+	void shouldApproveRequest(){
+		String request = """
+				{
+				    "requestType": "vacaciones",
+				    "startingDate": "05/16/2026",
+				    "finalDate": "05/30/2026",
+				    "voucherRequired": false,
+				    "employeeId": "12345"
+				}
+				""";
+		String body = """
+				{
+				    "1": "vacaciones aceptadas"
+				}
+				""";
+
+		// Insert request
+		RestAssured.given()
+				.contentType("application/json")
+				.body(request)
+				.when()
+				.post("/requests")
+				.then()
+				.statusCode(201);
+
+		// Approve it
+		RestAssured.given()
+				.contentType("application/json")
+				.queryParam("status","APPROVED")
+				.body(body)
+				.when()
+				.post("/requests/approve")
+				.then()
+				.statusCode(200);
 	}
 
 }
