@@ -49,7 +49,8 @@ class RequestsManagementApplicationTests {
 				    "requestType": "vacaciones",
 				    "startingDate": "05/16/2026",
 				    "finalDate": "05/30/2026",
-				    "voucherRequired": false
+				    "voucherRequired": false,
+				    "employeeId": "12345"
 				}
 				""";
 
@@ -72,7 +73,8 @@ class RequestsManagementApplicationTests {
 				    "requestType": "vacaciones",
 				    "startingDate": "05/16/2026",
 				    "finalDate": "05/30/2026",
-				    "voucherRequired": false
+				    "voucherRequired": false,
+				    "employeeId": "12345"
 				}
 				""";
 		// Insert element
@@ -100,7 +102,8 @@ class RequestsManagementApplicationTests {
 				    "requestType": "vacaciones",
 				    "startingDate": "05/16/2026",
 				    "finalDate": "05/30/2026",
-				    "voucherRequired": false
+				    "voucherRequired": false,
+				    "employeeId": "12345"
 				}
 				""";
 		String updatedBody = """
@@ -109,7 +112,8 @@ class RequestsManagementApplicationTests {
 				    "startingDate": "06/01/2026",
 				    "finalDate": "06/30/2026",
 				    "voucherRequired": true,
-				    "requestVoucher": "BASE64...."
+				    "requestVoucher": "BASE64....",
+				    "employeeId": "12345"
 				}
 				""";
 

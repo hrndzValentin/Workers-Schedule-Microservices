@@ -9,5 +9,6 @@ public record RequestDTO(String requestType,
                          @JsonFormat(pattern = "MM/dd/yyyy") LocalDate startingDate,
                          @JsonFormat(pattern = "MM/dd/yyyy") LocalDate finalDate,
                          boolean voucherRequired,
-                         @Nullable String requestVoucher) {
+                         @Nullable String requestVoucher,
+                         String employeeId) {
 }
