@@ -5,6 +5,7 @@ import com.valentin.requests.model.Request;
 import com.valentin.requests.model.RequestDTO;
 import com.valentin.requests.service.RequestService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+@Slf4j
 @RestController
 @RequestMapping("/requests")
 @RequiredArgsConstructor
@@ -37,6 +39,7 @@ public class RequestController {
         if (Set.of("PENDING", "APPROVED", "REJECTED", "EXPIRED").contains(status)) {
             return requestService.getEmployeeRequestsByStatus(employeeId, status);
         }else {
+            log.info("throws exception");
             throw new EndpointConsumptionException(status, "APPROVED or REJECTED");
         }
     }

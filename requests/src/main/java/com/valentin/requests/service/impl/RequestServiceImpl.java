@@ -54,7 +54,7 @@ public class RequestServiceImpl implements RequestService {
                                             status.equals("APPROVED")? RequestStatus.APPROVED:
                                             status.equals("REJECTED")? RequestStatus.REJECTED:
                                                     RequestStatus.EXPIRED;
-        return repository.findByEmployeeIdAndStatus(employeeId,mappedStatus).orElseThrow(() -> new RequestNotFoundException(details));
+        return repository.findByEmployeeIdAndStatus(employeeId,mappedStatus);
     }
 
 

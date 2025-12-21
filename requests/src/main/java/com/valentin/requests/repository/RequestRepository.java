@@ -10,5 +10,5 @@ import java.util.Optional;
 
 public interface RequestRepository extends JpaRepository<Request, Long> {
     //@Query("SELECT r FROM request r WHERE r.employeeId = :employeeId AND r.status = :status")
-    public Optional<List<Request>> findByEmployeeIdAndStatus(String employeeId, RequestStatus status);
+    public List<Request> findByEmployeeIdAndStatus(String employeeId, RequestStatus status);
 }
