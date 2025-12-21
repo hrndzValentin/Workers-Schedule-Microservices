@@ -27,4 +27,10 @@ public class RequestController {
     public List<Request> getAllRequests(){
         return requestService.getAllRequests();
     }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Request updateRequest(@RequestBody RequestDTO updateRequest, @RequestParam("id") Long id){
+        return requestService.updateRequest(updateRequest, id);
+    }
 }

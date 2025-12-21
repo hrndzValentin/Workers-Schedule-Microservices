@@ -10,4 +10,6 @@ public interface RequestService {
     public Request createRequest(RequestDTO requestDTO);
 
     public List<Request> getAllRequests();
+
+    public Request updateRequest(RequestDTO updateRequest, Long id);
 }

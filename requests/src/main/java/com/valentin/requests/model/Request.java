@@ -26,6 +26,10 @@ public class Request {
     private LocalDate finalDate;
     @Column(name = "request_voucher", nullable = true)
     private String requestVoucher;
+    @Column(name = "status", nullable = true)
+    private String status;
     @Column(name = "time_requested", nullable = false)
     private LocalTime timeRequested;
+    @Column(name = "status", nullable = false)
+    private String employerId;
 }
