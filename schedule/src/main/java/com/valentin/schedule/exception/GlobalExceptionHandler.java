@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(RequestNotFoundException.class)
+    @ExceptionHandler(ScheduleNotFoundException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Error handleRequestNotFoundExceptions(RequestNotFoundException exception){
+    public Error handleScheduleNotFoundExceptions(ScheduleNotFoundException exception){
         return Error.builder()
                 .status(false)
                 .code(400)
