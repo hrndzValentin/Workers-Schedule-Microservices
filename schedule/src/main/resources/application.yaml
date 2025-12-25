@@ -1,12 +1,11 @@
 spring:
   application:
-    name: requests-management
-
+    name: schedule-management
   datasource:
-    url: jdbc:postgresql://localhost:5432/requests_db
-    username: admin
-    password: admin123
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://localhost:3306/schedule-db
+    username: root
+    password: rootpassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
@@ -15,12 +14,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.MySQLDialect
 
     sql:
       init:
         mode: always  # to run schema/data scripts at startup if needed
-
 server:
   port: 8082
 

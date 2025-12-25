@@ -1,4 +1,4 @@
-package com.valentin.requests.service.impl;
+package com.valentin.schedule.service.impl;
 
 import com.valentin.requests.exception.RequestNotFoundException;
 import com.valentin.requests.model.Request;
@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +30,7 @@ public class RequestServiceImpl implements RequestService {
                 .requestType(requestDTO.requestType())
                 .startingDate(requestDTO.startingDate())
                 .finalDate(requestDTO.finalDate())
-                .requestVoucher(requestDTO.voucherRequired()? requestDTO.requestVoucher() :"NOT REQUIRED")
+                .requestVoucher(requestDTO.voucherRequired()? requestDTO.requestVoucher() : "NOT REQUIRED")
                 .employeeId(requestDTO.employeeId())
                 .status(RequestStatus.PENDING)
                 .responseOrDescription("Awaiting for response...")
@@ -48,13 +47,13 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public List<RequestDTO> getEmployeeRequestsByStatus(String employeeId, String status) {
+    public List<Request> getEmployeeRequestsByStatus(String employeeId, String status) {
         String details = "employeeId: " + employeeId + ", status: " + status;
         RequestStatus mappedStatus = status.equals("PENDING")? RequestStatus.PENDING:
                                             status.equals("APPROVED")? RequestStatus.APPROVED:
                                             status.equals("REJECTED")? RequestStatus.REJECTED:
                                                     RequestStatus.EXPIRED;
-        return repository.findByEmployeeDtos(employeeId,mappedStatus);
+        return repository.findByEmployeeIdAndStatus(employeeId,mappedStatus);
     }
 
 

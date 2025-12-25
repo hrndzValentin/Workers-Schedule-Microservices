@@ -1,4 +1,4 @@
-package com.valentin.requests.service;
+package com.valentin.schedule.service;
 
 import com.valentin.requests.model.Request;
 import com.valentin.requests.model.RequestDTO;
@@ -12,7 +12,7 @@ public interface RequestService {
 
     public List<Request> getAllRequests();
 
-    public List<RequestDTO> getEmployeeRequestsByStatus(String employeeId, String status);
+    public List<Request> getEmployeeRequestsByStatus(String employeeId, String status);
 
     public Request updateRequest(RequestDTO updateRequest, Long id);
 

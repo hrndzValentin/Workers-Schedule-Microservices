@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.valentin</groupId>
-	<artifactId>requests</artifactId>
+	<artifactId>schedule</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>requests-management</name>
-	<description>Spring booot project to manage workers schedule requests</description>
+	<name>schedule-management</name>
+	<description>Spring booot project to manage workers schedule</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -42,9 +42,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -79,13 +80,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.testcontainers</groupId>
-			<artifactId>testcontainers-postgresql</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>rest-assured</artifactId>
-			<version>6.0.0</version>
+			<artifactId>testcontainers-mysql</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

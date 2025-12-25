@@ -1,4 +1,4 @@
-package com.valentin.requests.controller;
+package com.valentin.schedule.controller;
 
 import com.valentin.requests.exception.EndpointConsumptionException;
 import com.valentin.requests.model.Request;
@@ -35,7 +35,7 @@ public class RequestController {
 
     @GetMapping("/status")
     @ResponseStatus(HttpStatus.OK)
-    public List<RequestDTO> getEmployeeRequestsByStatus(@RequestParam("employeeId") String employeeId, @RequestParam("status") String status){
+    public List<Request> getEmployeeRequestsByStatus(@RequestParam("employeeId") String employeeId, @RequestParam("status") String status){
         if (Set.of("PENDING", "APPROVED", "REJECTED", "EXPIRED").contains(status)) {
             return requestService.getEmployeeRequestsByStatus(employeeId, status);
         }else {
